@@ -1,14 +1,14 @@
 package SemaphoreLock;
 
-import StampedLock.SharedResource;
+import SemaphoreLock.SharedResource;
 
 public class Main {
     public static void main(String[] args) {
-        StampedLock.SharedResource resource = new SharedResource();
+        SharedResource resource = new SharedResource();
 
         Thread th1 = new Thread(resource::producer); // this line is same as below but written with method reference way
         Thread th2 = new Thread(() -> {
-            resource.consumer();
+            resource.producer();
         });
         Thread th3 = new Thread(resource::producer);
         Thread th4 = new Thread(resource::producer);
